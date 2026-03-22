@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monu Games</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #1e293b, #020617);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #94a3b8;
+      font-size: 1.2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: #334155;
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card p {
+      color: #94a3b8;
+    }
+
+    .reviews {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #cbd5f5;
+    }
+
+    .review {
+      margin-bottom: 8px;
+      padding-left: 10px;
+      border-left: 3px solid #3b82f6;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      background: #3b82f6;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .btn:hover {
+      background: #2563eb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #64748b;
+      border-top: 1px solid #1e293b;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Monu Games</h1>
+  <p>Indie Game Developer • Simple. Addictive. Fun.</p>
+</header>
+
+<section class="container">
+  <h2>🎮 Games</h2>
+
+  <div class="games">
+
+    <div class="card">
+      <h3>Deep Space Cache</h3>
+      <p>A semi-idle asteroid mining game with bullet heaven mechanics.</p>
+
+      <div class="reviews">
+        <div class="review">⭐ "Surprisingly addictive and relaxing gameplay."</div>
+        <div class="review">⭐ "Great idle progression with satisfying upgrades."</div>
+        <div class="review">⭐ "Perfect mix of action and idle mechanics."</div>
+      </div>
+
+      <a href="https://store.steampowered.com/app/3226750/" class="btn" target="_blank">View on Steam</a>
+    </div>
+
+    <div class="card">
+      <h3>Keyclash</h3>
+      <p>Build on keyboard keys and survive waves in this unique roguelike tower defense.</p>
+
+      <div class="reviews">
+        <div class="review">⭐ "Super creative concept using keyboard layout!"</div>
+        <div class="review">⭐ "Challenging and fun with lots of replayability."</div>
+        <div class="review">⭐ "Unique mechanics I haven't seen before."</div>
+      </div>
+
+      <a href="https://store.steampowered.com/app/3371060/" class="btn" target="_blank">View on Steam</a>
+    </div>
+
+    <div class="card">
+      <h3>Popup.exe (Coming Soon)</h3>
+      <p>A chill idle desktop game where you close popups and automate everything.</p>
+
+      <div class="reviews">
+        <div class="review">⭐ "Looks fun and very different from typical idle games."</div>
+        <div class="review">⭐ "Excited for this quirky concept!"</div>
+        <div class="review">⭐ "Wishlist material for sure."</div>
+      </div>
+
+      <a href="https://store.steampowered.com/app/4292670/" class="btn" target="_blank">Wishlist</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="container">
+  <h2>👨‍💻 About</h2>
+  <p>
+    Monu is a solo indie game developer focused on creating simple,
+    creative, and addictive gameplay experiences across casual and strategy genres.
+  </p>
+</section>
+
+<footer>
+  <p>© 2026 Monu Games • Built with ❤️</p>
+</footer>
+
+</body>
+</html>
