@@ -2,165 +2,1103 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Monu Games</title>
+  <meta
+    name="description"
+    content="Monu Games — small, strange indie games about simple ideas getting completely out of hand."
+  />
 
   <style>
+    /* =========================================================
+       MONU GAMES
+       handmade internet zone
+       ========================================================= */
+
+    :root {
+      --black: #050505;
+      --almost-black: #0c0c0c;
+      --panel: #111111;
+      --paper: #ece6d3;
+      --green: #b9d92f;
+      --green-dark: #829b14;
+      --yellow: #ffe44f;
+      --pink: #ff70b7;
+      --blue: #6dd8ff;
+      --red: #ff5555;
+      --grey: #9a9a9a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
+      color: var(--paper);
+      background-color: #020204;
+
+      /*
+        Completely CSS-generated star background.
+        No asset required.
+      */
+      background-image:
+        radial-gradient(circle at 10% 20%, #ffffff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 80% 70%, #8fd6ff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 40% 80%, #ff71cb 0 1px, transparent 1.5px),
+        radial-gradient(circle at 70% 10%, #ffffff 0 1px, transparent 1.5px),
+        radial-gradient(circle at 25% 60%, #785dff 0 1px, transparent 1.5px);
+
+      background-size:
+        91px 91px,
+        137px 137px,
+        173px 173px,
+        211px 211px,
+        251px 251px;
+
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      min-height: 100vh;
     }
 
-    header {
-      text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(135deg, #1e293b, #020617);
+    a {
+      color: inherit;
     }
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+    a:focus-visible {
+      outline: 3px dashed var(--yellow);
+      outline-offset: 4px;
     }
 
-    header p {
-      color: #94a3b8;
-      font-size: 1.2rem;
+    /* =========================================================
+       OUTER SITE
+       ========================================================= */
+
+    .site {
+      width: min(920px, calc(100% - 32px));
+      margin: 40px auto 80px;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+    /* =========================================================
+       MASTHEAD
+       ========================================================= */
 
-    .games {
+    .masthead {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
+      grid-template-columns: 210px 1fr;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 14px;
     }
 
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      border-radius: 12px;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      background: #334155;
-    }
-
-    .card h3 {
-      margin-top: 0;
-    }
-
-    .card p {
-      color: #94a3b8;
-    }
-
-    .reviews {
-      margin-top: 15px;
-      font-size: 0.9rem;
-      color: #cbd5f5;
-    }
-
-    .review {
-      margin-bottom: 8px;
-      padding-left: 10px;
-      border-left: 3px solid #3b82f6;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 15px;
-      background: #3b82f6;
-      color: white;
+    .logo {
+      position: relative;
+      display: block;
+      width: 190px;
+      padding: 13px 8px 7px;
+      text-align: center;
       text-decoration: none;
-      border-radius: 6px;
+
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: 48px;
+      line-height: 0.78;
+      letter-spacing: -2px;
+
+      color: #111;
+      background: var(--green);
+      border: 4px solid #111;
+      box-shadow:
+        5px 5px 0 var(--yellow),
+        -5px -5px 0 var(--pink);
+
+      transform: rotate(-3deg);
     }
 
-    .btn:hover {
-      background: #2563eb;
+    .logo span {
+      display: block;
+      font-size: 28px;
+      letter-spacing: 4px;
+      margin-top: 10px;
     }
+
+    .logo::after {
+      content: "★";
+      position: absolute;
+      right: -17px;
+      top: -23px;
+      color: var(--yellow);
+      font-size: 34px;
+      transform: rotate(18deg);
+      text-shadow: 2px 2px #000;
+    }
+
+    .intro-small {
+      margin: 0 0 7px;
+      color: var(--yellow);
+      font-family: "Courier New", monospace;
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .intro-title {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 7vw, 62px);
+      line-height: 0.92;
+      font-weight: normal;
+      text-shadow: 3px 3px 0 #000;
+    }
+
+    /* =========================================================
+       NAV
+       ========================================================= */
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      background: #111;
+      border: 3px solid #383838;
+      padding: 5px;
+      gap: 5px;
+      margin-bottom: 15px;
+    }
+
+    .nav a {
+      flex: 1;
+      min-width: 110px;
+      padding: 12px 10px;
+      background: var(--green-dark);
+      color: white;
+
+      border-top: 2px solid #d5ec66;
+      border-left: 2px solid #d5ec66;
+      border-right: 2px solid #4b5909;
+      border-bottom: 2px solid #4b5909;
+
+      text-align: center;
+      text-decoration: none;
+      font-family: Georgia, serif;
+      font-weight: bold;
+      font-size: 14px;
+
+      transition:
+        transform 80ms ease,
+        background 80ms ease;
+    }
+
+    .nav a:nth-child(2) {
+      background: #c44d80;
+      border-top-color: #ff99c6;
+      border-left-color: #ff99c6;
+      border-right-color: #702847;
+      border-bottom-color: #702847;
+    }
+
+    .nav a:nth-child(3) {
+      background: #337e9c;
+      border-top-color: #85ddff;
+      border-left-color: #85ddff;
+      border-right-color: #19485c;
+      border-bottom-color: #19485c;
+    }
+
+    .nav a:nth-child(4) {
+      background: #877d35;
+      border-top-color: #eadd72;
+      border-left-color: #eadd72;
+      border-right-color: #4a441b;
+      border-bottom-color: #4a441b;
+    }
+
+    .nav a:hover {
+      transform: translateY(-2px) rotate(-1deg);
+      filter: brightness(1.15);
+    }
+
+    .nav a:active {
+      transform: translateY(2px);
+    }
+
+    /* =========================================================
+       TICKER
+       ========================================================= */
+
+    .ticker {
+      overflow: hidden;
+      white-space: nowrap;
+      border: 2px solid #555;
+      background: #000;
+      color: var(--yellow);
+      font: bold 12px "Courier New", monospace;
+      padding: 8px 0;
+      margin-bottom: 15px;
+    }
+
+    .ticker-inner {
+      display: inline-block;
+      min-width: 100%;
+      padding-left: 100%;
+      animation: ticker 25s linear infinite;
+    }
+
+    @keyframes ticker {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-200%);
+      }
+    }
+
+    /* =========================================================
+       WINDOWS
+       ========================================================= */
+
+    .window {
+      background: var(--black);
+      border: 3px solid #343434;
+      box-shadow:
+        0 0 0 2px #000,
+        8px 8px 0 rgba(0, 0, 0, 0.55);
+
+      margin-bottom: 22px;
+    }
+
+    .window-titlebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+
+      background: #1a1a1a;
+      border-bottom: 2px solid #393939;
+      padding: 9px 11px;
+
+      font: bold 13px "Courier New", monospace;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .window-buttons {
+      display: flex;
+      gap: 5px;
+    }
+
+    .window-button {
+      width: 12px;
+      height: 12px;
+      border: 1px solid #000;
+      background: var(--pink);
+    }
+
+    .window-button:nth-child(2) {
+      background: var(--yellow);
+    }
+
+    .window-button:nth-child(3) {
+      background: var(--green);
+    }
+
+    .window-body {
+      padding: 24px;
+    }
+
+    /* =========================================================
+       WELCOME
+       ========================================================= */
+
+    .welcome {
+      display: grid;
+      grid-template-columns: 1fr 190px;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .welcome h1 {
+      margin: 0 0 14px;
+      font-family: Georgia, serif;
+      font-size: clamp(32px, 6vw, 55px);
+      font-weight: normal;
+      line-height: 0.95;
+    }
+
+    .welcome p {
+      max-width: 600px;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0 0 13px;
+    }
+
+    .welcome strong {
+      color: var(--yellow);
+    }
+
+    .monu-orb {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+      border: 4px dashed var(--pink);
+
+      background:
+        radial-gradient(circle at 32% 27%, #fff 0 4%, transparent 5%),
+        radial-gradient(circle at 40% 38%, #c9e83e, #728c13 45%, #1c2705 75%);
+
+      color: #090909;
+      font-family: Impact, sans-serif;
+      font-size: 28px;
+      text-align: center;
+      line-height: 0.9;
+
+      transform: rotate(5deg);
+      box-shadow:
+        0 0 0 5px #101010,
+        0 0 28px rgba(185, 217, 47, 0.25);
+
+      animation: floaty 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floaty {
+      from {
+        transform: rotate(4deg) translateY(-3px);
+      }
+
+      to {
+        transform: rotate(7deg) translateY(5px);
+      }
+    }
+
+    /* =========================================================
+       SECTION HEADINGS
+       ========================================================= */
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 17px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: 32px;
+    }
+
+    .scribble {
+      color: var(--pink);
+      font: bold 13px "Comic Sans MS", cursive;
+      transform: rotate(-3deg);
+    }
+
+    /* =========================================================
+       GAMES
+       ========================================================= */
+
+    .games-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .game {
+      position: relative;
+      display: grid;
+      grid-template-columns: 245px 1fr;
+      gap: 19px;
+
+      padding: 13px;
+      background: #0e0e0e;
+      border: 2px solid #383838;
+    }
+
+    .game:nth-child(even) {
+      transform: rotate(0.15deg);
+    }
+
+    .game:nth-child(odd) {
+      transform: rotate(-0.12deg);
+    }
+
+    .game:hover {
+      border-color: var(--green);
+    }
+
+    .game-image {
+      position: relative;
+      overflow: hidden;
+      min-height: 138px;
+      background:
+        linear-gradient(135deg, #222, #070707);
+      border: 2px solid #575757;
+    }
+
+    .game-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 138px;
+      object-fit: cover;
+    }
+
+    .game-image::after {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      opacity: 0.18;
+
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent 3px,
+          #000 4px
+        );
+    }
+
+    .game-info {
+      min-width: 0;
+    }
+
+    .game-status {
+      display: inline-block;
+      margin-bottom: 7px;
+      padding: 4px 7px;
+
+      font: bold 11px "Courier New", monospace;
+      letter-spacing: 1px;
+
+      color: #000;
+      background: var(--yellow);
+
+      transform: rotate(-1deg);
+    }
+
+    .game-status.released {
+      background: var(--green);
+    }
+
+    .game h3 {
+      margin: 0 0 7px;
+
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: 25px;
+      line-height: 1.05;
+    }
+
+    .game p {
+      margin: 0 0 13px;
+      color: #c7c7c7;
+      font-family: Georgia, serif;
+      line-height: 1.5;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 13px;
+    }
+
+    .tag {
+      padding: 3px 6px;
+      border: 1px dashed #666;
+      color: #aaa;
+      font: 11px "Courier New", monospace;
+    }
+
+    .steam-link {
+      display: inline-block;
+
+      background: #d8d8d8;
+      color: #080808;
+
+      padding: 8px 11px;
+
+      border-top: 2px solid white;
+      border-left: 2px solid white;
+      border-bottom: 2px solid #606060;
+      border-right: 2px solid #606060;
+
+      text-decoration: none;
+      font: bold 12px "Courier New", monospace;
+      text-transform: uppercase;
+    }
+
+    .steam-link:hover {
+      background: var(--green);
+      transform: rotate(-1deg);
+    }
+
+    /* =========================================================
+       RANDOM NOTE
+       ========================================================= */
+
+    .note {
+      width: min(520px, 100%);
+      margin: 28px auto 5px;
+      padding: 19px 25px 24px;
+
+      background: #f5e772;
+      color: #181508;
+
+      font-family: "Comic Sans MS", "Trebuchet MS", cursive;
+      font-size: 16px;
+      line-height: 1.4;
+
+      box-shadow: 6px 7px 0 rgba(0, 0, 0, 0.6);
+      transform: rotate(1.4deg);
+    }
+
+    .note strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    /* =========================================================
+       ABOUT
+       ========================================================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 30px;
+    }
+
+    .about-grid p {
+      font-family: Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .terminal {
+      background: #060906;
+      border: 2px inset #555;
+      padding: 13px;
+
+      color: #9ef47a;
+      font: 12px/1.7 "Courier New", monospace;
+    }
+
+    .terminal .blink {
+      animation: blink 1s steps(2) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
 
     footer {
       text-align: center;
-      padding: 30px;
-      color: #64748b;
-      border-top: 1px solid #1e293b;
+      margin-top: 30px;
+      color: #999;
+      font: 11px/1.8 "Courier New", monospace;
+    }
+
+    footer a {
+      color: var(--green);
+    }
+
+    .footer-icons {
+      margin-bottom: 9px;
+      letter-spacing: 8px;
+      color: var(--yellow);
+      font-size: 17px;
+    }
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 720px) {
+      .site {
+        width: min(100% - 18px, 920px);
+        margin-top: 17px;
+      }
+
+      .masthead {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .logo {
+        width: 158px;
+        font-size: 40px;
+      }
+
+      .welcome {
+        grid-template-columns: 1fr;
+      }
+
+      .monu-orb {
+        width: 145px;
+        justify-self: center;
+      }
+
+      .game {
+        grid-template-columns: 1fr;
+      }
+
+      .game-image {
+        aspect-ratio: 460 / 215;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .window-body {
+        padding: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Monu Games</h1>
-  <p>Indie Game Developer • Simple. Addictive. Fun.</p>
-</header>
+  <main class="site" id="top">
 
-<section class="container">
-  <h2>🎮 Games</h2>
+    <!-- ===================== HEADER ===================== -->
 
-  <div class="games">
+    <header class="masthead">
+      <a href="#top" class="logo" aria-label="Monu Games home">
+        MONU
+        <span>GAMES</span>
+      </a>
 
-    <div class="card">
-      <h3>Deep Space Cache</h3>
-      <p>A semi-idle asteroid mining game with bullet heaven mechanics.</p>
-
-      <div class="reviews">
-        <div class="review">⭐ "Surprisingly addictive and relaxing gameplay."</div>
-        <div class="review">⭐ "Great idle progression with satisfying upgrades."</div>
-        <div class="review">⭐ "Perfect mix of action and idle mechanics."</div>
+      <div>
+        <p class="intro-small">one person / several questionable ideas</p>
+        <p class="intro-title">small games.<br>big numbers.</p>
       </div>
+    </header>
 
-      <a href="https://store.steampowered.com/app/3226750/" class="btn" target="_blank">View on Steam</a>
+
+    <!-- ===================== NAV ===================== -->
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#top">home</a>
+      <a href="#upcoming">new stuff</a>
+      <a href="#released">old stuff</a>
+      <a href="#about">who is monu?</a>
+    </nav>
+
+
+    <!-- ===================== TICKER ===================== -->
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-inner">
+        *** WELCOME TO MONU GAMES ***
+        CURRENTLY MAKING A BASKETBALL NUMBER GO VERY HIGH ***
+        PIPPLOP REMAINS VERY SMALL ***
+        THANK YOU FOR VISITING MY WEBSITE ***
+      </div>
     </div>
 
-    <div class="card">
-      <h3>Keyclash</h3>
-      <p>Build on keyboard keys and survive waves in this unique roguelike tower defense.</p>
 
-      <div class="reviews">
-        <div class="review">⭐ "Super creative concept using keyboard layout!"</div>
-        <div class="review">⭐ "Challenging and fun with lots of replayability."</div>
-        <div class="review">⭐ "Unique mechanics I haven't seen before."</div>
+    <!-- ===================== WELCOME ===================== -->
+
+    <section class="window">
+      <div class="window-titlebar">
+        <span>monu_games/homepage.txt</span>
+
+        <div class="window-buttons" aria-hidden="true">
+          <span class="window-button"></span>
+          <span class="window-button"></span>
+          <span class="window-button"></span>
+        </div>
       </div>
 
-      <a href="https://store.steampowered.com/app/3371060/" class="btn" target="_blank">View on Steam</a>
-    </div>
+      <div class="window-body welcome">
+        <div>
+          <h1>WELCOME TO<br>MONU GAMES</h1>
 
-    <div class="card">
-      <h3>Popup.exe</h3>
-      <p>A chill idle desktop game where you close popups and automate everything.</p>
+          <p>
+            Hi. I make <strong>small weird games</strong> that usually
+            begin with one very simple idea and then get taken way too far.
+          </p>
 
-      <div class="reviews">
-        <div class="review">⭐ "Looks fun and very different from typical idle games."</div>
-        <div class="review">⭐ "Excited for this quirky concept!"</div>
-        <div class="review">⭐ "Wishlist material for sure."</div>
+          <p>
+            Asteroids. Keyboard keys. Popups. Basketballs.
+            Tiny circle creatures. That's basically the website.
+          </p>
+        </div>
+
+        <div class="monu-orb">
+          MONU<br>
+          GAMES
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== UPCOMING ===================== -->
+
+    <section class="window" id="upcoming">
+      <div class="window-titlebar">
+        <span>folder: /things_i_am_currently_making/</span>
+
+        <div class="window-buttons" aria-hidden="true">
+          <span class="window-button"></span>
+          <span class="window-button"></span>
+          <span class="window-button"></span>
+        </div>
       </div>
 
-      <a href="https://store.steampowered.com/app/4292670/" class="btn" target="_blank">View on Steam</a>
-    </div>
+      <div class="window-body">
 
-  </div>
-</section>
+        <div class="section-heading">
+          <h2>Upcoming games</h2>
+          <span class="scribble">please wishlist these!!!</span>
+        </div>
 
-<section class="container">
-  <h2>👨‍💻 About</h2>
-  <p>
-    Monu is a solo indie game developer focused on creating simple,
-    creative, and addictive gameplay experiences across casual and strategy genres.
-  </p>
-</section>
+        <div class="games-list">
 
-<footer>
-  <p>© 2026 Monu Games • Built with ❤️</p>
-</footer>
+          <!-- GAME 1 -->
+
+          <article class="game">
+            <div class="game-image">
+              <img
+                src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5004940/header.jpg"
+                alt="A Game About Scoring 1,000,000,000,000 Points"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              />
+            </div>
+
+            <div class="game-info">
+              <span class="game-status">UPCOMING — Q3 2026</span>
+
+              <h3>A Game About Scoring<br>1,000,000,000,000 Points</h3>
+
+              <p>
+                One beach court. One basketball. One completely unreasonable
+                number. Shoot, upgrade, automate and prestige until the number
+                finally reaches one trillion.
+              </p>
+
+              <div class="tags">
+                <span class="tag">basketball</span>
+                <span class="tag">incremental</span>
+                <span class="tag">PSX-ish</span>
+                <span class="tag">number go up</span>
+              </div>
+
+              <a
+                href="https://store.steampowered.com/app/5004940/A_Game_About_Scoring_1000000000000_Points/"
+                class="steam-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                wishlist on steam →
+              </a>
+            </div>
+          </article>
+
+
+          <!-- GAME 2 -->
+
+          <article class="game">
+            <div class="game-image">
+              <img
+                src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4478250/header.jpg"
+                alt="Pipplop's Tiny Adventure"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              />
+            </div>
+
+            <div class="game-info">
+              <span class="game-status">UPCOMING — 2026</span>
+
+              <h3>Pipplop's Tiny Adventure</h3>
+
+              <p>
+                Enter circles to launch a very tiny creature through very tiny
+                levels. A bite-sized precision puzzle platformer with fast
+                retries and increasingly mean little stages.
+              </p>
+
+              <div class="tags">
+                <span class="tag">tiny</span>
+                <span class="tag">puzzle</span>
+                <span class="tag">platformer</span>
+                <span class="tag">150+ levels</span>
+              </div>
+
+              <a
+                href="https://store.steampowered.com/app/4478250/Pipplops_Tiny_Adventure/"
+                class="steam-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                wishlist / play demo →
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== RELEASED ===================== -->
+
+    <section class="window" id="released">
+      <div class="window-titlebar">
+        <span>folder: /games_that_escaped/</span>
+
+        <div class="window-buttons" aria-hidden="true">
+          <span class="window-button"></span>
+          <span class="window-button"></span>
+          <span class="window-button"></span>
+        </div>
+      </div>
+
+      <div class="window-body">
+
+        <div class="section-heading">
+          <h2>Released games</h2>
+          <span class="scribble">they're real somehow</span>
+        </div>
+
+        <div class="games-list">
+
+          <!-- DEEP SPACE CACHE -->
+
+          <article class="game">
+            <div class="game-image">
+              <img
+                src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3226750/header.jpg"
+                alt="Deep Space Cache"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              />
+            </div>
+
+            <div class="game-info">
+              <span class="game-status released">RELEASED — 2024</span>
+
+              <h3>Deep Space Cache</h3>
+
+              <p>
+                Shoot asteroids, collect their resources, upgrade your little
+                space operation and eventually turn the whole thing into an
+                increasingly ridiculous resource machine.
+              </p>
+
+              <div class="tags">
+                <span class="tag">space</span>
+                <span class="tag">incremental</span>
+                <span class="tag">bullet heaven</span>
+                <span class="tag">short</span>
+              </div>
+
+              <a
+                href="https://store.steampowered.com/app/3226750/"
+                class="steam-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                see it on steam →
+              </a>
+            </div>
+          </article>
+
+
+          <!-- KEYCLASH -->
+
+          <article class="game">
+            <div class="game-image">
+              <img
+                src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3371060/header.jpg"
+                alt="Keyclash"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              />
+            </div>
+
+            <div class="game-info">
+              <span class="game-status released">RELEASED — 2025</span>
+
+              <h3>Keyclash</h3>
+
+              <p>
+                Your keyboard is the battlefield. Buy keys, turn them into
+                defenses and survive increasingly unpleasant waves of things
+                that would really like your keyboard to stop existing.
+              </p>
+
+              <div class="tags">
+                <span class="tag">tower defense</span>
+                <span class="tag">roguelike</span>
+                <span class="tag">keyboard</span>
+                <span class="tag">strategy</span>
+              </div>
+
+              <a
+                href="https://store.steampowered.com/app/3371060/"
+                class="steam-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                see it on steam →
+              </a>
+            </div>
+          </article>
+
+
+          <!-- POPUP.EXE -->
+
+          <article class="game">
+            <div class="game-image">
+              <img
+                src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4292670/header.jpg"
+                alt="Popup.exe"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              />
+            </div>
+
+            <div class="game-info">
+              <span class="game-status released">RELEASED — 2026</span>
+
+              <h3>Popup.exe</h3>
+
+              <p>
+                A tiny idle game that lives in the corner of your screen.
+                Close popups. Make money. Buy automation. Eventually become
+                frighteningly efficient at closing fake internet garbage.
+              </p>
+
+              <div class="tags">
+                <span class="tag">desktop</span>
+                <span class="tag">idle</span>
+                <span class="tag">popups</span>
+                <span class="tag">automation</span>
+              </div>
+
+              <a
+                href="https://store.steampowered.com/app/4292670/"
+                class="steam-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                see it on steam →
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+
+        <div class="note">
+          <strong>developer note:</strong>
+          apparently every game I make eventually becomes about making
+          a number larger. I'm choosing not to investigate this.
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===================== ABOUT ===================== -->
+
+    <section class="window" id="about">
+      <div class="window-titlebar">
+        <span>who_even_made_this.html</span>
+
+        <div class="window-buttons" aria-hidden="true">
+          <span class="window-button"></span>
+          <span class="window-button"></span>
+          <span class="window-button"></span>
+        </div>
+      </div>
+
+      <div class="window-body about-grid">
+
+        <div>
+          <div class="section-heading">
+            <h2>Who is Monu?</h2>
+          </div>
+
+          <p>
+            I'm a solo indie developer making compact games that revolve
+            around one strong mechanic, preferably one that can be explained
+            without opening a 46-page design document.
+          </p>
+
+          <p>
+            Sometimes they are relaxing. Sometimes they are weird.
+            Sometimes you are trying to score one trillion basketball points.
+          </p>
+
+          <a
+            href="https://store.steampowered.com/developer/Monu"
+            class="steam-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            my steam developer page →
+          </a>
+        </div>
+
+        <div class="terminal">
+          &gt; developer: monu<br>
+          &gt; employees: 1<br>
+          &gt; games released: some<br>
+          &gt; games unfinished: classified<br>
+          &gt; sleep schedule: null<br>
+          &gt; current status: making game<br>
+          &gt; _<span class="blink">█</span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===================== FOOTER ===================== -->
+
+    <footer>
+      <div class="footer-icons" aria-hidden="true">
+        ★ ★ ★ ★ ★
+      </div>
+
+      MONU GAMES © 2026<br>
+      hand coded with an irresponsible number of &lt;div&gt;s<br>
+
+      <a href="#top">return to top before it's too late</a>
+    </footer>
+
+  </main>
 
 </body>
 </html>
